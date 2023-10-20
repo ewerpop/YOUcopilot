@@ -32,12 +32,6 @@ export default {
         }
 
     },
-    methods: {
-        addToCount: function (id) {
-            this.players.map((count) => {
 
-            })
-        }
-    },
 };
 </script>
