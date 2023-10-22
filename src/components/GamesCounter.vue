@@ -5,12 +5,11 @@
             <h1>{{ isMessageEmpty }}</h1>
         </div>
         <div v-else>
-            <div v-for="player in players" :key="player.id">
+            <div v-for="note in notes" :key="note.id">
                 <div>
-                    <h1>{{ player.name }}</h1>
-                    <input type="number" v-model="numberToCount" />
-                    <button @click="addToCounte(player.id)">Добавить к очкам</button>
-                    <h6>{{ player.count }}</h6>
+                    <input type="text" v-model="note.text" />
+                    <button>Добавить к очкам</button>
+                    <h6>{{ note.text }}</h6>
                 </div>
             </div>
         </div>
@@ -22,13 +21,11 @@ export default {
     name: 'GamesCounter',
     data() {
         return {
-            players: [
-                { id: 1, count: 0, name: "Oleg" },
-                { id: new Date().getTime(), count: 0, name: "Vadim" },
-                { id: 2, count: 0, name: "Maksim" },
+            notes: [
+                { id: new Date().getTime(), text: "Something" },
+                { id: 2, count: 0, text: "Something" },
             ],
             isMessageEmpty: false,
-            numberToCount: 0,
         }
 
     },

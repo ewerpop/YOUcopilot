@@ -1,16 +1,58 @@
 <template>
-  <div class="hello">
-    <h1>Main</h1>
-  </div>
+  <main>
+      <h1>Main</h1>
+      <div v-if="isAuth">
+          <div>
+              Hello user <b>{{ username }}</b>
+          </div>
+          <b-button variant="danger" @click="logOut">LogOut</b-button>
+      </div>
+      <div v-else>
+          <label>Register, please</label>
+          <b-form-input @keyup.enter="login" type="text" v-model="username" style="border: 2px solid rgb(130, 130, 218);"></b-form-input>
+          <b-button variant="success" @click="login">Login</b-button>
+      </div>
+  </main>
 </template>
 
 <script>
+
 export default {
   name: 'MainPage',
+  data() {
+      return {
+          isAuth: false,
+          username: ""
+      }
+  },
+  created() {
+      if (localStorage.getItem('isAuth')) {
+          this.isAuth = true
+          this.username = localStorage.getItem('username');
+      }
+  },
+  methods: {
+      login: function(){
+          if (this.username !== '') {
+              console.log("this.username");
+              this.isAuth = true;
+              localStorage.setItem("isAuth", true);
+              localStorage.setItem("username", this.username);
+              this.$router.push({
+                  name: "ChatView",
+              })
+          }else{
+              alert("Input your data")
+          }
+      },
+      logOut: function(){
+          this.isAuth = false
+          this.username = ""
+          localStorage.removeItem("isAuth");
+          localStorage.removeItem("username");
+      }
+  }
+      
 }
+
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-
-</style>
