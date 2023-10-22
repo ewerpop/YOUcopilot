@@ -6,15 +6,11 @@
                     fluid alt="Responsive image"></b-img>
             </div>
             <b-navbar-brand :to="'/'">YOUcopilot</b-navbar-brand>
-
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
-                    <!-- <b-nav-item :to="'/todo'">Список дел</b-nav-item> -->
                     <b-nav-item :to="'/chat'">Чат</b-nav-item>
                     <b-nav-item :to="'/notepad'">Заметки</b-nav-item>
-                    <!-- <b-nav-item :to="'/games-counter'">Счётчик очков</b-nav-item> -->
                     <b-nav-item :to="'/api'">API</b-nav-item>
                 </b-navbar-nav>
 
@@ -39,7 +35,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'NavBar',
     data() {

@@ -9,9 +9,6 @@
                 Напишите здесь что-нибудь, а я запомню
             </div>
         </div>
-        <!-- <input @keyup.enter="sendMessage" placeholder="Input text" v-model="newMessage" type="text" id="input" />
-        <button @click="sendMessage" class="button">Send</button>
-        <button @click="deleteMessage" class="button">Delete</button> -->
         <b-input-group class="mt-3">
             <b-form-input @keyup.enter="sendMessage" v-model="newMessage" style="border: 2px solid rgb(130, 130, 218);"></b-form-input>
             <b-input-group-append>
