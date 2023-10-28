@@ -58,6 +58,6 @@ export default {
       localStorage.removeItem("isAuth");
       localStorage.removeItem("username");
     }
-  }
+  },
 }
 </script>

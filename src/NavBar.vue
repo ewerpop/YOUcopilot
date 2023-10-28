@@ -12,6 +12,7 @@
                     <b-nav-item :to="'/chat'">Чат</b-nav-item>
                     <b-nav-item :to="'/notepad'">Заметки</b-nav-item>
                     <b-nav-item :to="'/api'">API</b-nav-item>
+                    <b-nav-item :to="'/todo'">ToDo</b-nav-item>
                 </b-navbar-nav>
 
 

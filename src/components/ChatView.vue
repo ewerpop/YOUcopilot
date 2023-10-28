@@ -10,7 +10,7 @@
             </div>
         </div>
         <b-input-group class="mt-3">
-            <b-form-input @keyup.enter="sendMessage" v-model="newMessage" style="border: 2px solid rgb(130, 130, 218);"></b-form-input>
+            <b-form-input @keyup.enter="sendMessage" v-model="newMessage" style="border: 2px solid rgb(130, 130, 218); height: 40px;"></b-form-input>
             <b-input-group-append>
                 <b-button @click="sendMessage" variant="outline-success">Отправить</b-button>
                 <b-button @click="deleteMessage" variant="danger">Очистить</b-button>
@@ -40,9 +40,6 @@ export default  {
     },
     methods: {
         sendMessage() {
-            if(this.username == "") {
-                this.username = localStorage.getItem('anonymous')
-            }
             if(this.newMessage !== "") {
                 this.emptyMsg = false
                 console.log(this.newMessage)
