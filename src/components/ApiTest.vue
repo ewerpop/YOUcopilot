@@ -1,18 +1,31 @@
 <template>
     <main>
-        <h3>
+        <h3 style="margin-bottom: 18px;">
             Teams
         </h3>
-        <div v-if="isLoading">Loading...</div>
+        <div v-if="isLoading">
+            <b-overlay :show="isLoading" rounded="sm">
+                <div v-for="(el) in teamData" :key="el.id">
+                    <b-list-group>
+                        <b-list-group-item style="border: 2.5px solid black;"><b-avatar rounded="left"
+                                style="width: 20px; height: 20px;"></b-avatar>
+                            <b>{{ el.id }}. {{ el.abbreviation }} {{ el.city }}</b><img
+                                src="../assets/wastebasket-emoji.png" alt="delete" style="width: 18px; height: 18px;"
+                                @click="removeTeam(el.id)" /></b-list-group-item>
+                    </b-list-group>
+                </div>
+            </b-overlay>
+        </div>
+
         <div v-else>
             <div v-for="(el) in teamData" :key="el.id">
                 <b-list-group>
-                    <b-list-group-item style="border: 2.5px solid black;"><b-avatar rounded="left" style="width: 20px; height: 20px;"></b-avatar>
+                    <b-list-group-item style="border: 2.5px solid black;"><b-avatar rounded="left"
+                            style="width: 20px; height: 20px;"></b-avatar>
                         <b>{{ el.id }}. {{ el.abbreviation }} {{ el.city }}</b><img src="../assets/wastebasket-emoji.png"
                             alt="delete" style="width: 18px; height: 18px;"
                             @click="removeTeam(el.id)" /></b-list-group-item>
                 </b-list-group>
-
             </div>
         </div>
     </main>

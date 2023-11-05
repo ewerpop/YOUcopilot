@@ -8,13 +8,13 @@
       <b-button variant="danger" @click="logOut">LogOut</b-button>
       <div style="margin-top: 10px;">
         <b-card-group deck>
-          <b-card header="Новости" header-tag="header" title="Добавлены заметки!">
-            <b-card-text>Переходи, чтобы записать свои мысли</b-card-text>
-            <b-button variant="primary" :to="'/notepad'">Заметки</b-button>
+          <b-card header="Новости" header-tag="header" title="Добавлены счётчик для игр!">
+            <b-card-text>Вот и повод собраться с друзьями</b-card-text>
+            <b-button variant="primary" :to="'/games-counter'">Счётчик</b-button>
           </b-card>
 
-          <b-card header="Планы" header-tag="header" title="TODO лист в разработке!">
-            <b-card-text>Релиз в первом квартале следующего года</b-card-text>
+          <b-card header="Планы" header-tag="header" title="Переход с localStorage на SQL!">
+            <b-card-text>Скоро будет BackEnd</b-card-text>
           </b-card>
         </b-card-group>
       </div>

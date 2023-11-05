@@ -53,20 +53,23 @@ export default {
                 this.lists.push(item)
                 this.createRecords(item)
                 this.newText = ""
-                console.log(this.lists)
             } else {
                 alert('Введите текст заметки')
             }
 
         },
         createRecords(item) {
-            const records = this.lists
             localStorage.setItem(`notes_${item.id}`, JSON.stringify(item))
-            console.log(records)
         },
         deleteAll() {
-            this.lists = [],
-                localStorage.removeItem('notes', JSON.stringify(this.lists))
+            this.lists = []
+            for (let i = 0; i < localStorage.length; i++) {
+                let key = localStorage.key(i);
+                if (key.startsWith('notes')) {
+                    console.log(key)
+                    localStorage.removeItem(key)
+                }
+            }
             this.emptyMsg = true
         },
         loadRecords() {
@@ -76,9 +79,9 @@ export default {
                 if (key.startsWith('notes')) {
                     records.push(JSON.parse(localStorage.getItem(key)))
                 }
-                //alert(`${key}: ${localStorage.getItem(key)}`);
+                
             }
-            //const records = JSON.parse(localStorage.getItem('notes'));
+            
             if (records) {
                 this.lists = records
                 this.emptyText = false
