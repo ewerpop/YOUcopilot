@@ -1,26 +1,34 @@
 <template>
     <div>
-        <div class="notepad">
-            <h2>Заметки</h2>
-            <div class="text" v-for="message in messages" :key="message.id">
-                {{ message.text }}
-            </div>
-            <div v-show="emptyMsg" class="empty">
-                Напишите здесь что-нибудь, а я запомню
-            </div>
+        <div v-if="mobile == true">
+            <h1>
+                Ваше устройство не поддерживается
+            </h1>
         </div>
-        <b-input-group class="mt-3">
-            <b-form-input @keyup.enter="sendMessage" v-model="newMessage" style="border: 2px solid rgb(130, 130, 218);"></b-form-input>
-            <b-input-group-append>
-                <b-button @click="sendMessage" variant="outline-success">Отправить</b-button>
-                <b-button @click="deleteMessage" variant="danger">Очистить</b-button>
-            </b-input-group-append>
-        </b-input-group>
+        <div v-else>
+            <div class="notepad" >
+                <h2>Заметки</h2>
+                <div class="text" v-for="message in messages" :key="message.id">
+                    {{ message.text }}
+                </div>
+                <div v-show="emptyMsg" class="empty">
+                    Напишите здесь что-нибудь, а я запомню
+                </div>
+            </div>
+            <b-input-group class="mt-3">
+                <b-form-input @keyup.enter="sendMessage" v-model="newMessage"
+                    style="border: 2px solid rgb(130, 130, 218);"></b-form-input>
+                <b-input-group-append>
+                    <b-button @click="sendMessage" variant="outline-success">Отправить</b-button>
+                    <b-button @click="deleteMessage" variant="danger">Очистить</b-button>
+                </b-input-group-append>
+            </b-input-group>
+        </div>
     </div>
-    
 </template>
 
 <script>
+
 export default {
     name: 'NotePad',
     data() {
@@ -28,13 +36,18 @@ export default {
             messages: [],
             newMessage: "",
             emptyMsg: true,
-            
+            mobile: false
         }
     },
     computed() {
         localStorage.setItem('username', this.$route.query.username)
     },
     methods: {
+        detectMob() {
+            if ((window.innerWidth <= 800) && (window.innerHeight <= 600)) {
+                this.mobile = true
+            }
+        },
         sendMessage() {
             if (this.username == "") {
                 this.username = localStorage.getItem('anonymous')
@@ -70,6 +83,7 @@ export default {
     },
     created() {
         this.loadChatRecords()
+        this.detectMob()
     },
 }
 </script>
@@ -83,9 +97,11 @@ export default {
     background-color: rgb(175, 175, 241);
     border-radius: 9px
 }
+
 #input {
     border: 2.5px solid rgb(130, 130, 218)
 }
+
 .button {
     border: 2.5px solid rgb(130, 130, 218)
 }
